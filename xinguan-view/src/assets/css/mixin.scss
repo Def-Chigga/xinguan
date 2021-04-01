@@ -1,0 +1,52 @@
+@import "./variable";
+
+/* 超出行数变为... */
+@mixin clampN($index){
+  overflow:hidden;
+  text-overflow:ellipsis;
+  display:-webkit-box;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:$index;
+}
+/* flex 弹性布局 */
+// 垂直居中对齐
+@mixin FlexCenter(){
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+// 两端对齐垂直居中
+@mixin FlexSBCenter(){
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+// 两端留空隙垂直居中
+@mixin FlexSACenter(){
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+/* position 定位布局 */
+// 水平垂直居中
+@mixin PosXYCenter{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+// 水平居中
+@mixin PosXCenter($width:0){
+  position: absolute;
+  top: $width;
+  left: 50%;
+  transform: translateX(-50%);
+}
+// 垂直居中
+@mixin PosYCenter($width:0){
+  position: absolute;
+  top: 50%;
+  left: $width;
+  transform: translateY(-50%);
+}
