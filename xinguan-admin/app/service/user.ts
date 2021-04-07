@@ -53,46 +53,48 @@ export default class User extends Service {
         },
       ],
     });
-    // 1.获取当前登录用户拥有的所有权限
-    let allRights:any[] = [];
-    user.roles.forEach(role => {
-      role.rights.forEach(item => {
-        allRights.push(item);
+    if (user !== null) {
+      // 1.获取当前登录用户拥有的所有权限
+      let allRights:any[] = [];
+      user.roles.forEach(role => {
+        role.rights.forEach(item => {
+          allRights.push(item);
+        });
       });
-    });
-    // 2.剔除重复的权限
-    /*
-    {id: 1, rightsName: '权限管理', rightsType:'menu'},
-    {id: 2, rightsName: '角色列表', rightsType:'menu'},
-    {id: 3, rightsName: '权限列表', rightsType:'menu'},
-    {id: 4, rightsName: '权限管理', rightsType:'router'},
-    {id: 5, rightsName: '角色列表', rightsType:'router'},
-    {id: 6, rightsName: '权限列表', rightsType:'router'},
-    {id: 7, rightsName: '权限管理', rightsType:'menu'},
+      // 2.剔除重复的权限
+      /*
+        {id: 1, rightsName: '权限管理', rightsType:'menu'},
+        {id: 2, rightsName: '角色列表', rightsType:'menu'},
+        {id: 3, rightsName: '权限列表', rightsType:'menu'},
+        {id: 4, rightsName: '权限管理', rightsType:'router'},
+        {id: 5, rightsName: '角色列表', rightsType:'router'},
+        {id: 6, rightsName: '权限列表', rightsType:'router'},
+        {id: 7, rightsName: '权限管理', rightsType:'menu'},
 
-     const temp = {
-        权限管理:true
-     };
-    * */
-    const temp = {};
-    allRights = allRights.reduce((arr, item) => {
-      if (!temp[item.dataValues.id]) {
-        arr.push(item);
-        temp[item.dataValues.id] = true;
-      }
-      return arr;
-    }, []);
-    // 3.生成权限树
-    allRights = allRights.filter(outItem => {
-      allRights.forEach(inItem => {
-        if (outItem.dataValues.id === inItem.dataValues.pid) {
-          outItem.dataValues.children ? '' : outItem.dataValues.children = [];
-          outItem.dataValues.children.push(inItem);
+         const temp = {
+            权限管理:true
+         };
+        * */
+      const temp = {};
+      allRights = allRights.reduce((arr, item) => {
+        if (!temp[item.dataValues.id]) {
+          arr.push(item);
+          temp[item.dataValues.id] = true;
         }
+        return arr;
+      }, []);
+      // 3.生成权限树
+      allRights = allRights.filter(outItem => {
+        allRights.forEach(inItem => {
+          if (outItem.dataValues.id === inItem.dataValues.pid) {
+            outItem.dataValues.children ? '' : outItem.dataValues.children = [];
+            outItem.dataValues.children.push(inItem);
+          }
+        });
+        if (outItem.dataValues.level === 0) return true;
       });
-      if (outItem.dataValues.level === 0) return true;
-    });
-    user.dataValues.rightsTree = allRights;
+      user.dataValues.rightsTree = allRights;
+    }
     return user;
   }
 }
