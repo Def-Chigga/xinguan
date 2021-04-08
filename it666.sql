@@ -11,7 +11,7 @@
  Target Server Version : 80020
  File Encoding         : 65001
 
- Date: 01/04/2021 14:59:05
+ Date: 08/04/2021 16:46:19
 */
 
 SET NAMES utf8mb4;
@@ -428,7 +428,6 @@ INSERT INTO `user_roles` VALUES (8, 1, 1, '2020-08-27 15:27:36', '2020-08-27 15:
 INSERT INTO `user_roles` VALUES (10, 1, 2, '2021-03-20 21:02:24', '2021-03-20 21:02:24');
 INSERT INTO `user_roles` VALUES (12, 3, 3, '2021-03-20 21:04:59', '2021-03-20 21:04:59');
 INSERT INTO `user_roles` VALUES (13, 2, 4, '2021-03-20 21:10:31', '2021-03-20 21:10:31');
-INSERT INTO `user_roles` VALUES (14, 57, 4, '2021-03-25 20:28:20', '2021-03-25 20:28:20');
 
 -- ----------------------------
 -- Table structure for users
@@ -466,5 +465,6 @@ INSERT INTO `users` VALUES (10, 'it666123', NULL, NULL, '5f236c1092868c216022ae0
 INSERT INTO `users` VALUES (11, NULL, '97606888@qq.com', NULL, '5f236c1092868c216022ae0e301210d4', '2020-08-17 16:14:44', '2020-08-17 16:14:44', 1, '/public/avatar.png');
 INSERT INTO `users` VALUES (12, NULL, NULL, '17301727666', '5f236c1092868c216022ae0e301210d4', '2020-08-17 16:14:44', '2020-08-17 16:14:44', 1, '/public/avatar.png');
 INSERT INTO `users` VALUES (57, 'abc', NULL, NULL, '9d3cd696ee8897573f7dacec166821ae', '2021-03-25 20:27:56', '2021-03-25 20:27:56', 1, '/public/avatar.png');
+INSERT INTO `users` VALUES (60, '456', NULL, NULL, '9d3cd696ee8897573f7dacec166821ae', '2021-04-07 21:10:43', '2021-04-07 21:10:43', 1, '/public/avatar.png');
 
 SET FOREIGN_KEY_CHECKS = 1;
